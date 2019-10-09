@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Hoppy-Days-Assets/GFX/Players/Player.gd" type="Script" id=1]
+[ext_resource path="res://Hoppy-Days-Assets/GFX/Players/bunny2_stand.png" type="Texture" id=2]
+[ext_resource path="res://Hoppy-Days-Assets/GFX/Players/bunny2_ready.png" type="Texture" id=3]
+[ext_resource path="res://Hoppy-Days-Assets/GFX/Players/bunny2_walk2.png" type="Texture" id=4]
+[ext_resource path="res://Hoppy-Days-Assets/GFX/Players/bunny2_walk1.png" type="Texture" id=5]
+[ext_resource path="res://Hoppy-Days-Assets/GFX/Players/bunny2_jump.png" type="Texture" id=6]
+[ext_resource path="res://Hoppy-Days-Assets/SFX/jump1.ogg" type="AudioStream" id=7]
+[ext_resource path="res://craftpix-771083-free-cartoon-parallax-2d-backgrounds/PNG/platformer_background_1/platformer_background_1.png" type="Texture" id=8]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 1.37964
+height = 1.4027
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 989.346, -619.966 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -577.873, 968.774 )
+scale = Vector2( 22.1439, 19.747 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -471.304, 925.625 )
+current = true
+smoothing_enabled = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -576.331, 969.051 )
+scale = Vector2( 0.415841, 0.415841 )
+frames = SubResource( 2 )
+animation = "idle"
+playing = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 1557.75, 217.361 )
+scale = Vector2( 1.60378, 1.60378 )
+texture = ExtResource( 8 )
