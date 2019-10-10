@@ -10,7 +10,7 @@ const UP = Vector2 (0,-1)
 
 
 
-	
+
 func _physics_process(delta):
 	
 	apply_gravity()

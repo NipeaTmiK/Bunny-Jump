@@ -1,4 +1,6 @@
 extends Node2D
+
+# Member variables
 export var motion = Vector2()
 export var cycle = 1.0
 var accum = 0.0
@@ -10,4 +12,4 @@ func _physics_process(delta):
 	var d = sin(accum)
 	var xf = Transform2D()
 	xf[2]= motion * d 
-	$platform.ransform = xf
+	$KinematicBody2D.transform = xf
